@@ -47,15 +47,15 @@ services:
     env_file:
       - ./mysql/configs/env-variables.env
 
-  phpmyadmin:
+  service-docker-symfony-phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: service-docker-symfony-phpmyadmin
     networks:
       - services-docker-symfony
     environment:
      - PMA_ARBITRARY=1
     restart: always
     ports:
-     - 8080:80
+     - 8081:80
     volumes:
      - /sessions
