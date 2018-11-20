@@ -1,17 +1,33 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: dmytro
+ * Date: 19.11.18
+ * Time: 21:21
+ */
 
 namespace App\Services;
 
-class ShopProduct
+use App\Interfaces\IdentityObject;
+use App\Traits\IdentityTrait;
+use App\Traits\PriceUtilities;
+
+
+class ShopProduct implements IdentityObject
 {
-    public $title = "Standard product";
-    public $producerLastName = "Last name";
-    public $producerFirstName = "First name";
-    public $price = 0;
+    use IdentityTrait, PriceUtilities;
 
-
-    public function __toString()
+    public function storeIdentityObject(IdentityObject $identityObject)
     {
-        return "test" . rand(1, 3);
+        if ($identityObject instanceof IdentityObject) {
+            var_dump(111);
+        }
+
+        if ($identityObject instanceof ShopProduct) {
+            var_dump(2222);
+        }
+
+        die();
+        var_dump($identityObject);
     }
 }
