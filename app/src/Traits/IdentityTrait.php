@@ -15,4 +15,9 @@ trait IdentityTrait
     {
         return uniqid();
     }
+    function calculateTax($price)
+    {
+        return 1;
+    }
+
 }

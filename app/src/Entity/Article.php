@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Abstracts\ArticleCreator;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
-class Article
+class Article extends ArticleCreator
 {
     /**
      * @ORM\Id()

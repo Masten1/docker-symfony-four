@@ -15,19 +15,22 @@ use App\Traits\PriceUtilities;
 
 class ShopProduct implements IdentityObject
 {
-    use IdentityTrait, PriceUtilities;
+    use IdentityTrait, PriceUtilities {
+        PriceUtilities::calculateTax insteadof IdentityTrait;
+        IdentityTrait::calculateTax as identityCalculateTax;
+        PriceUtilities::calculateTax as private;
+    }
+
+    protected function getTextRate()
+    {
+        return 20;
+    }
 
     public function storeIdentityObject(IdentityObject $identityObject)
     {
-        if ($identityObject instanceof IdentityObject) {
-            var_dump(111);
-        }
+        dump(self::calculateTax(1));
+        dump($this->identityCalculateTax(2));
 
-        if ($identityObject instanceof ShopProduct) {
-            var_dump(2222);
-        }
-
-        die();
-        var_dump($identityObject);
+        dump($this->calculateSomeValue());
     }
 }

@@ -11,10 +11,17 @@ namespace App\Traits;
 
 trait PriceUtilities
 {
-    private $textRate = 17;
+    private static $textRate = 17;
 
-    function calculateTax($price)
+    static function calculateTax($price)
     {
-        return (($this->textRate / 100) * $price);
+        return 2;
     }
+
+    public function calculateSomeValue()
+    {
+        return $this->getTextRate() * 2;
+    }
+
+    abstract function getTextRate();
 }
